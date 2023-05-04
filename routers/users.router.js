@@ -131,4 +131,12 @@ router.post("/reset", async (request, respond) => {
   }
 });
 
+router.get("/userdata", async (request, respond) => {
+  const result = await Client.db("stackoverflowclone")
+    .collection("user")
+    .find({})
+    .toArray();
+  respond.status(200).send(result);
+});
+
 export default router;
