@@ -1,9 +1,10 @@
 import express from "express";
 import { Client } from "../index.js";
+import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post("/askquestions", async (request, respond) => {
+router.post("/askquestions", auth, async (request, respond) => {
   const data = request.body;
   const result = await Client.db("stackoverflowclone")
     .collection("questions")
