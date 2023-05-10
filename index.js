@@ -5,6 +5,7 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import userRouter from "./routers/users.router.js";
+import dataRouter from "./routers/data.router.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -17,6 +18,7 @@ await Client.connect();
 console.log(`Connected to MongoDB`);
 
 app.use("/users", userRouter);
+app.use("/data", dataRouter);
 
 app.listen(PORT, () => {
   console.log(`Server: ${PORT}`);
